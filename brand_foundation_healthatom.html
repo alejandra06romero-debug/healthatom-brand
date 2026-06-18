@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Foundation — Healthatom Group</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+  :root {
+    --ha-teal: #0B6E5C;
+    --ha-teal-light: #E0F2EE;
+    --ha-teal-mid: #4CAB95;
+    --dl-blue: #1A4F9C;
+    --dl-blue-light: #E6EEF9;
+    --dl-blue-mid: #5882C1;
+    --ml-purple: #5C2D8E;
+    --ml-purple-light: #EFE8F7;
+    --ml-purple-mid: #9B6DC8;
+    --neutral-dark: #1A1A1A;
+    --neutral-mid: #4A4A4A;
+    --neutral-soft: #8A8A8A;
+    --neutral-line: #E8E8E8;
+    --neutral-bg: #F7F7F5;
+    --white: #FFFFFF;
+    --accent-gold: #C9922A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--neutral-bg);
+    color: var(--neutral-dark);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--neutral-dark);
+    color: var(--white);
+    padding: 80px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(76,171,149,0.18) 0%, transparent 70%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(92,45,142,0.14) 0%, transparent 70%);
+  }
+  .cover-eyebrow {
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ha-teal-mid);
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 1.08;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .cover-title em {
+    font-style: italic;
+    color: var(--ha-teal-mid);
+  }
+  .cover-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    max-width: 540px;
+    line-height: 1.65;
+    margin-bottom: 56px;
+  }
+  .brand-chips {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .brand-chip {
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .02em;
+  }
+  .chip-ha { background: var(--ha-teal); color: #fff; }
+  .chip-ml { background: var(--ml-purple); color: #fff; }
+  .chip-dl { background: var(--dl-blue); color: #fff; }
+  .cover-date {
+    position: absolute;
+    bottom: 40px; right: 64px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--neutral-line);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 52px;
+  }
+  .nav a {
+    text-decoration: none;
+    color: var(--neutral-soft);
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: all .15s;
+    font-weight: 500;
+  }
+  .nav a:hover { color: var(--neutral-dark); background: var(--neutral-bg); }
+  .nav-brand {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--neutral-dark);
+    margin-right: auto;
+    letter-spacing: -.01em;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 72px 48px; }
+  .section { margin-bottom: 80px; }
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 36px;
+    color: var(--neutral-dark);
+  }
+  .divider {
+    height: 1px;
+    background: var(--neutral-line);
+    margin: 64px 0;
+  }
+
+  /* ── BRAND TABS ── */
+  .brand-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--neutral-line);
+    margin-bottom: 36px;
+  }
+  .brand-tab {
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all .2s;
+    color: var(--neutral-soft);
+  }
+  .brand-tab.active-ha { border-color: var(--ha-teal); color: var(--ha-teal); }
+  .brand-tab.active-ml { border-color: var(--ml-purple); color: var(--ml-purple); }
+  .brand-tab.active-dl { border-color: var(--dl-blue); color: var(--dl-blue); }
+  .brand-tab:hover:not(.active-ha):not(.active-ml):not(.active-dl) { color: var(--neutral-dark); }
+  .brand-panel { display: none; }
+  .brand-panel.active { display: block; }
+
+  /* ── CARDS ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--neutral-line);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+  }
+  .card-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .card-body { font-size: 14px; color: var(--neutral-mid); line-height: 1.65; }
+  .card-accent { border-left: 4px solid; padding-left: 20px; }
+
+  /* ── PERSONALITY ── */
+  .personality-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:700px){ .personality-grid { grid-template-columns: 1fr; } }
+  .persona-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--neutral-dark);
+    margin-bottom: 16px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag {
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .tag-ha { background: var(--ha-teal-light); color: var(--ha-teal); }
+  .tag-ml { background: var(--ml-purple-light); color: var(--ml-purple); }
+  .tag-dl { background: var(--dl-blue-light); color: var(--dl-blue); }
+  .tag-neutral { background: #F0F0EE; color: var(--neutral-mid); }
+
+  /* ── TONE DIALS ── */
+  .dial-list { display: flex; flex-direction: column; gap: 18px; }
+  .dial-row { display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 16px; }
+  .dial-label-left { font-size: 13px; color: var(--neutral-mid); text-align: right; }
+  .dial-label-right { font-size: 13px; color: var(--neutral-mid); text-align: left; }
+  .dial-track {
+    height: 6px;
+    background: var(--neutral-line);
+    border-radius: 6px;
+    position: relative;
+  }
+  .dial-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    border-radius: 6px;
+  }
+  .dial-thumb {
+    position: absolute;
+    top: -7px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    box-shadow: 0 1px 6px rgba(0,0,0,.18);
+    transform: translateX(-50%);
+  }
+  .dial-caption {
+    font-size: 11px;
+    color: var(--neutral-soft);
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  /* ── SAYS / NEVER SAYS ── */
+  .dos-donts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:700px){ .dos-donts { grid-template-columns: 1fr; } }
+  .dos-box, .donts-box {
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .dos-box { background: #F0FAF7; border: 1px solid #B8E6DA; }
+  .donts-box { background: #FEF3F3; border: 1px solid #F5C2C2; }
+  .dos-title { font-size: 13px; font-weight: 700; color: #0B6E5C; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .donts-title { font-size: 13px; font-weight: 700; color: #B83030; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .phrase-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .phrase-list li {
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    line-height: 1.45;
+  }
+  .dos-box .phrase-list li { background: rgba(11,110,92,.07); color: #0B4A3E; }
+  .donts-box .phrase-list li { background: rgba(184,48,48,.07); color: #7A1A1A; }
+
+  /* ── MANIFESTO ── */
+  .manifesto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:700px){ .manifesto-grid { grid-template-columns: 1fr; } }
+  .manifesto-block {
+    background: var(--white);
+    border: 1px solid var(--neutral-line);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .manifesto-stem {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .manifesto-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--neutral-mid);
+  }
+  .manifesto-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--neutral-dark);
+    padding: 24px 0;
+    border-top: 1px solid var(--neutral-line);
+    margin-top: 24px;
+  }
+
+  /* ── ICP ── */
+  .icp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:700px){ .icp-grid { grid-template-columns: 1fr; } }
+  .icp-card {
+    background: var(--white);
+    border: 1px solid var(--neutral-line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .icp-header {
+    padding: 18px 24px 14px;
+    border-bottom: 1px solid var(--neutral-line);
+  }
+  .icp-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .icp-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  .icp-sub { font-size: 12px; color: var(--neutral-soft); }
+  .icp-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .icp-section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .icp-text { font-size: 13px; color: var(--neutral-mid); line-height: 1.6; }
+  .icp-headline {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--neutral-dark);
+    font-style: italic;
+    border-left: 3px solid;
+    padding-left: 12px;
+    line-height: 1.4;
+  }
+
+  /* ── OVERVIEW SUMMARY TABLE ── */
+  .overview-table { width: 100%; border-collapse: collapse; }
+  .overview-table th, .overview-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--neutral-line);
+    font-size: 13px;
+  }
+  .overview-table th { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--neutral-soft); font-weight: 600; }
+  .overview-table tr:last-child td { border-bottom: none; }
+  .overview-table td:first-child { font-weight: 600; color: var(--neutral-dark); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--neutral-dark);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 40px 48px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover" id="inicio">
+  <div class="cover-eyebrow">Brand Foundation Document · Workshop Junio 2025</div>
+  <h1 class="cover-title">El estilo con que<br><em>hablamos al mundo</em><br>de la salud.</h1>
+  <p class="cover-sub">Síntesis estratégica del taller de marca. Personalidad, tono, manifiesto y mensajes por ICP para las tres marcas del grupo.</p>
+  <div class="brand-chips">
+    <span class="brand-chip chip-ha">⚛ Healthatom</span>
+    <span class="brand-chip chip-ml">🏥 Medilink</span>
+    <span class="brand-chip chip-dl">🦷 Dentalink</span>
+  </div>
+  <div class="cover-date">Versión 1.0 · Junio 2025</div>
+</section>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-brand">Healthatom Group · Brand</span>
+  <a href="#resumen">Resumen</a>
+  <a href="#personalidad">Personalidad</a>
+  <a href="#tono">Tono</a>
+  <a href="#manifiesto">Manifiesto</a>
+  <a href="#icp">Por ICP</a>
+</nav>
+
+<main class="page">
+
+  <!-- RESUMEN COMPARATIVO -->
+  <section class="section" id="resumen">
+    <div class="section-eyebrow" style="color:var(--ha-teal)">Visión general</div>
+    <h2 class="section-title">Las tres marcas en un vistazo</h2>
+    <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+      <!-- Healthatom -->
+      <div class="card" style="border-top: 4px solid var(--ha-teal)">
+        <div class="card-label" style="color:var(--ha-teal)">⚛ Healthatom</div>
+        <div class="card-title">El ecosistema.</div>
+        <div class="card-body">La marca madre. Mezcla innovación, investigación y tecnología con servicio a las personas. Pocas la conocen aún, pero las que la conocen sienten asombro y respeto.</div>
+        <div class="tags">
+          <span class="tag tag-ha">Innovadora</span>
+          <span class="tag tag-ha">Ambiciosa</span>
+          <span class="tag tag-ha">Tecnológica</span>
+          <span class="tag tag-ha">Humana</span>
+        </div>
+      </div>
+
+      <!-- Medilink -->
+      <div class="card" style="border-top: 4px solid var(--ml-purple)">
+        <div class="card-label" style="color:var(--ml-purple)">🏥 Medilink</div>
+        <div class="card-title">El aliado integral.</div>
+        <div class="card-body">Software para centros médicos. El especialista en salud como negocio. Quita carga administrativa para que el profesional pueda centrarse en lo que más importa: sus pacientes.</div>
+        <div class="tags">
+          <span class="tag tag-ml">Empática</span>
+          <span class="tag tag-ml">Confiable</span>
+          <span class="tag tag-ml">Experta</span>
+          <span class="tag tag-ml">Cercana</span>
+        </div>
+      </div>
+
+      <!-- Dentalink -->
+      <div class="card" style="border-top: 4px solid var(--dl-blue)">
+        <div class="card-label" style="color:var(--dl-blue)">🦷 Dentalink</div>
+        <div class="card-title">El que hace crecer.</div>
+        <div class="card-body">Software dental más antiguo de Chile, presente en más de 22 países. Ayuda a clínicas a recuperar el control, reducir el caos y crecer de forma ordenada. Incluye financiamiento, seguros y pagos en línea — y una suite de herramientas IA única en el mercado.</div>
+        <div class="tags">
+          <span class="tag tag-dl">Disruptiva</span>
+          <span class="tag tag-dl">Humana</span>
+          <span class="tag tag-dl">Experta</span>
+          <span class="tag tag-dl">Aspiracional</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;background:var(--white);border:1px solid var(--neutral-line);border-radius:16px;overflow:hidden;">
+      <table class="overview-table">
+        <thead>
+          <tr>
+            <th>Dimensión</th>
+            <th style="color:var(--ha-teal)">⚛ Healthatom</th>
+            <th style="color:var(--ml-purple)">🏥 Medilink</th>
+            <th style="color:var(--dl-blue)">🦷 Dentalink</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Emoción que genera</td>
+            <td>Asombro, inspiración, confianza</td>
+            <td>Alivio, seguridad, valor</td>
+            <td>Tranquilidad, alivio, orgullo</td>
+          </tr>
+          <tr>
+            <td>Referente cultural</td>
+            <td>Star Trek — tecnología al servicio humano</td>
+            <td>The Martian — resuelve lo complejo, sin perder lo humano</td>
+            <td>Ted Lasso — cercanía, optimismo y resultados reales</td>
+          </tr>
+          <tr>
+            <td>Tono dominante</td>
+            <td>Inspiracional y visionario</td>
+            <td>Empático y experto</td>
+            <td>Cercano y práctico</td>
+          </tr>
+          <tr>
+            <td>Diferencial clave</td>
+            <td>Ecosistema completo de salud digital en Latam</td>
+            <td>Único software 100% especialista en salud, con altos estándares de ciberseguridad y seguridad de la información. Suite de herramientas IA integradas — ningún otro software en salud lo tiene.</td>
+            <td>Software dental más antiguo de Chile, presente en más de 22 países. Incluye opciones de financiamiento, seguros y pagos en línea. Suite de herramientas IA integradas — ningún otro software dental lo tiene.</td>
+          </tr>
+          <tr>
+            <td>Lo que nunca sería</td>
+            <td>Lejana, fría, solo corporativa</td>
+            <td>Aburrida, arrogante, técnica sin corazón</td>
+            <td>Presuntuosa, complicada, que haga sentir solo al cliente</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PERSONALIDAD -->
+  <section class="section" id="personalidad">
+    <div class="section-eyebrow" style="color:var(--ml-purple)">Personalidad de marca</div>
+    <h2 class="section-title">¿Cómo es cada marca como persona?</h2>
+
+    <div class="brand-tabs">
+      <div class="brand-tab active-ha" onclick="showBrand('personalidad','ha',this)">⚛ Healthatom</div>
+      <div class="brand-tab" onclick="showBrand('personalidad','ml',this)">🏥 Medilink</div>
+      <div class="brand-tab" onclick="showBrand('personalidad','dl',this)">🦷 Dentalink</div>
+    </div>
+
+    <!-- HA -->
+    <div id="personalidad-ha" class="brand-panel active">
+      <div class="personality-grid">
+        <div class="card" style="border-left: 4px solid var(--ha-teal)">
+          <div class="card-label" style="color:var(--ha-teal)">Quién es</div>
+          <div class="persona-quote">"Es la genio, el cerebrito, la curiosa. El a todo dar. Ama el cuidado y la protección, pero antes de tomar cualquier decisión, siempre se informa."</div>
+          <p class="card-body">Persona visionaria que entiende profundamente la industria de la salud. Mantiene los pies en la tierra. Inspira confianza, impulsa innovación y ayuda a otros a adaptarse al futuro sin perder su esencia humana.</p>
+          <div class="tags">
+            <span class="tag tag-ha">Innovadora</span><span class="tag tag-ha">Ambiciosa</span>
+            <span class="tag tag-ha">Tecnológica</span><span class="tag tag-ha">Conexión</span>
+            <span class="tag tag-ha">Humana</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card">
+            <div class="card-label" style="color:var(--ha-teal)">Lo que nunca haría</div>
+            <ul class="phrase-list" style="padding:0">
+              <li style="background:#F0FAF7;color:#0B4A3E;padding:8px 12px;border-radius:8px;font-size:13px">Ser lejana o difícil de comprender</li>
+              <li style="background:#F0FAF7;color:#0B4A3E;padding:8px 12px;border-radius:8px;font-size:13px">Comportarse solo como corporativa fría</li>
+              <li style="background:#F0FAF7;color:#0B4A3E;padding:8px 12px;border-radius:8px;font-size:13px">Ocultar información para beneficiarse</li>
+              <li style="background:#F0FAF7;color:#0B4A3E;padding:8px 12px;border-radius:8px;font-size:13px">Hablar sin saber de la parte humana</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color:var(--ha-teal)">Referente cultural</div>
+            <p class="card-body"><strong>Star Trek</strong> — imagina un futuro mejor y utiliza la tecnología para mejorar la vida de las personas, siempre poniendo al ser humano en el centro.</p>
+            <p class="card-body" style="margin-top:8px;color:var(--neutral-soft);font-size:12px">También: For All Mankind (persevera y se adapta). Tensión creativa: "El hombre invisible — porque nadie la ha visto ni conoce aún."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ML -->
+    <div id="personalidad-ml" class="brand-panel">
+      <div class="personality-grid">
+        <div class="card" style="border-left: 4px solid var(--ml-purple)">
+          <div class="card-label" style="color:var(--ml-purple)">Quién es</div>
+          <div class="persona-quote">"Un profesional de 37 años, confiable, inteligente, colaborativo. No busca protagonismo, su satisfacción está en que todo funcione bien."</div>
+          <p class="card-body">Persona multifacética, flexible y muy pro. Se compromete pero aún no ha explotado todo su potencial. Sigue buscando su estilo. Es alguien que conecta personas, organiza info y facilita el trabajo de los demás.</p>
+          <div class="tags">
+            <span class="tag tag-ml">Empática</span><span class="tag tag-ml">Confiable</span>
+            <span class="tag tag-ml">Experta</span><span class="tag tag-ml">Tecnológica</span>
+            <span class="tag tag-ml">Cercana</span><span class="tag tag-ml">Segura</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card">
+            <div class="card-label" style="color:var(--ml-purple)">Lo que nunca haría</div>
+            <ul class="phrase-list" style="padding:0">
+              <li style="background:#F3EDFB;color:#3D1A6A;padding:8px 12px;border-radius:8px;font-size:13px">Hablar de salud como un negocio frío</li>
+              <li style="background:#F3EDFB;color:#3D1A6A;padding:8px 12px;border-radius:8px;font-size:13px">Ser aburrida, mentirosa o burlona</li>
+              <li style="background:#F3EDFB;color:#3D1A6A;padding:8px 12px;border-radius:8px;font-size:13px">Generar barreras entre profesionales y pacientes</li>
+              <li style="background:#F3EDFB;color:#3D1A6A;padding:8px 12px;border-radius:8px;font-size:13px">Priorizar tecnología sobre las personas</li>
+              <li style="background:#F3EDFB;color:#3D1A6A;padding:8px 12px;border-radius:8px;font-size:13px">Hablar desde la arrogancia</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color:var(--ml-purple)">Referente cultural</div>
+            <p class="card-body"><strong>The Martian</strong> — resuelve problemas complejos de manera práctica, coordinando recursos y personas para lograr un objetivo común.</p>
+            <p class="card-body" style="margin-top:8px;color:var(--neutral-soft);font-size:12px">También: Grey's Anatomy, The Good Doctor. Persona de 40 años — seria, profesional, con humor fome, no tan cercana a la tecnología pero le gusta descubrirla.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DL -->
+    <div id="personalidad-dl" class="brand-panel">
+      <div class="personality-grid">
+        <div class="card" style="border-left: 4px solid var(--dl-blue)">
+          <div class="card-label" style="color:var(--dl-blue)">Quién es</div>
+          <div class="persona-quote">"Un hombre confiable, sociable, alegre, conversador, profesional. Le gusta seguir tendencias. Es respetuoso."</div>
+          <p class="card-body">Una persona organizada que siempre tiene el control de las cosas sin parecer rígida. Cercana, práctica, optimista y resolutiva. Habla con claridad, escucha antes de proponer, tiene mentalidad emprendedora. Entiende que detrás de cada clínica hay sueños, esfuerzo y personas.</p>
+          <div class="tags">
+            <span class="tag tag-dl">Disruptiva</span><span class="tag tag-dl">Humana</span>
+            <span class="tag tag-dl">Experta</span><span class="tag tag-dl">Aspiracional</span>
+            <span class="tag tag-dl">Cercana</span><span class="tag tag-dl">Confiable</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card">
+            <div class="card-label" style="color:var(--dl-blue)">Lo que nunca haría</div>
+            <ul class="phrase-list" style="padding:0">
+              <li style="background:#EBF0FA;color:#0D2E6E;padding:8px 12px;border-radius:8px;font-size:13px">Hablar de tecnismos innecesarios</li>
+              <li style="background:#EBF0FA;color:#0D2E6E;padding:8px 12px;border-radius:8px;font-size:13px">Hacer sentir al cliente que está solo</li>
+              <li style="background:#EBF0FA;color:#0D2E6E;padding:8px 12px;border-radius:8px;font-size:13px">Ser presuntuosa, conflictiva o mentirosa</li>
+              <li style="background:#EBF0FA;color:#0D2E6E;padding:8px 12px;border-radius:8px;font-size:13px">Prometer sin resultados</li>
+              <li style="background:#EBF0FA;color:#0D2E6E;padding:8px 12px;border-radius:8px;font-size:13px">Perder de vista el lado humano de la odontología</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-label" style="color:var(--dl-blue)">Referente cultural</div>
+            <p class="card-body"><strong>Ted Lasso</strong> — combina cercanía, empatía y optimismo con capacidad real de generar cambios y resultados. Cree en las personas y las ayuda a alcanzar su potencial.</p>
+            <p class="card-body" style="margin-top:8px;color:var(--neutral-soft);font-size:12px">También: Iron Man (innovación, inteligencia), Toy Story (trabajo en equipo, roles claros). Tensión: "Un cripto bro, a veces no espera y se impone."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TONO -->
+  <section class="section" id="tono">
+    <div class="section-eyebrow" style="color:var(--dl-blue)">Tono de comunicación</div>
+    <h2 class="section-title">Cómo suena cada marca</h2>
+
+    <div class="brand-tabs">
+      <div class="brand-tab active-ha" onclick="showBrand('tono','ha',this)">⚛ Healthatom</div>
+      <div class="brand-tab" onclick="showBrand('tono','ml',this)">🏥 Medilink</div>
+      <div class="brand-tab" onclick="showBrand('tono','dl',this)">🦷 Dentalink</div>
+    </div>
+
+    <!-- HA TONO -->
+    <div id="tono-ha" class="brand-panel active">
+      <div class="personality-grid">
+        <div>
+          <div class="dial-list" style="background:var(--white);border:1px solid var(--neutral-line);border-radius:16px;padding:28px">
+            <p style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--neutral-mid)">Posicionamiento de tono — Healthatom</p>
+            <!-- formal-cercano: 65% hacia cercano -->
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Formal</div>
+                <div class="dial-track"><div class="dial-fill" style="width:65%;background:linear-gradient(90deg,var(--neutral-line),var(--ha-teal-mid))"></div><div class="dial-thumb" style="left:65%;background:var(--ha-teal)"></div></div>
+                <div class="dial-label-right">Cercano</div>
+              </div>
+              <p class="dial-caption">Tendencia hacia cercano, pero mantiene autoridad</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Técnico</div>
+                <div class="dial-track"><div class="dial-fill" style="width:45%;background:linear-gradient(90deg,var(--neutral-line),var(--ha-teal-mid))"></div><div class="dial-thumb" style="left:45%;background:var(--ha-teal)"></div></div>
+                <div class="dial-label-right">Simple y claro</div>
+              </div>
+              <p class="dial-caption">Equilibrio — habla de tech pero lo hace entendible</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Serio</div>
+                <div class="dial-track"><div class="dial-fill" style="width:35%;background:linear-gradient(90deg,var(--neutral-line),var(--ha-teal-mid))"></div><div class="dial-thumb" style="left:35%;background:var(--ha-teal)"></div></div>
+                <div class="dial-label-right">Con humor</div>
+              </div>
+              <p class="dial-caption">Predominantemente serio — su tema es la salud</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Aspiracional</div>
+                <div class="dial-track"><div class="dial-fill" style="width:75%;background:linear-gradient(90deg,var(--neutral-line),var(--ha-teal-mid))"></div><div class="dial-thumb" style="left:75%;background:var(--ha-teal)"></div></div>
+                <div class="dial-label-right">Práctico</div>
+              </div>
+              <p class="dial-caption">Muy aspiracional — construye futuro</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Corporativo</div>
+                <div class="dial-track"><div class="dial-fill" style="width:70%;background:linear-gradient(90deg,var(--neutral-line),var(--ha-teal-mid))"></div><div class="dial-thumb" style="left:70%;background:var(--ha-teal)"></div></div>
+                <div class="dial-label-right">Humano</div>
+              </div>
+              <p class="dial-caption">Claramente humano — la tecnología sirve a las personas</p>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="dos-box">
+            <div class="dos-title">✅ Healthatom dice</div>
+            <ul class="phrase-list">
+              <li>"El futuro de la salud no se construye solo con tecnología, sino con personas que ayuden a otras a trabajar mejor."</li>
+              <li>"Creemos en una salud más humana, más eficiente y más conectada."</li>
+              <li>"Mezclamos innovación, investigación y tecnología con servicio a las personas."</li>
+              <li>"Somos amplio con repartir conocimiento."</li>
+            </ul>
+          </div>
+          <div class="donts-box">
+            <div class="donts-title">🚫 Healthatom nunca dice</div>
+            <ul class="phrase-list">
+              <li>"Somos el mejor ecosistema de salud del mercado."</li>
+              <li>Lenguaje frío, corporativo, sin contexto humano</li>
+              <li>Promesas sin sustento ni demostración</li>
+              <li>Jerga técnica sin traducción al beneficio real</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ML TONO -->
+    <div id="tono-ml" class="brand-panel">
+      <div class="personality-grid">
+        <div>
+          <div class="dial-list" style="background:var(--white);border:1px solid var(--neutral-line);border-radius:16px;padding:28px">
+            <p style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--neutral-mid)">Posicionamiento de tono — Medilink</p>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Formal</div>
+                <div class="dial-track"><div class="dial-fill" style="width:55%;background:linear-gradient(90deg,var(--neutral-line),var(--ml-purple-mid))"></div><div class="dial-thumb" style="left:55%;background:var(--ml-purple)"></div></div>
+                <div class="dial-label-right">Cercano</div>
+              </div>
+              <p class="dial-caption">Levemente hacia cercano — empático pero serio</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Técnico</div>
+                <div class="dial-track"><div class="dial-fill" style="width:40%;background:linear-gradient(90deg,var(--neutral-line),var(--ml-purple-mid))"></div><div class="dial-thumb" style="left:40%;background:var(--ml-purple)"></div></div>
+                <div class="dial-label-right">Simple y claro</div>
+              </div>
+              <p class="dial-caption">Algo técnico — es especialista en salud, se nota</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Serio</div>
+                <div class="dial-track"><div class="dial-fill" style="width:40%;background:linear-gradient(90deg,var(--neutral-line),var(--ml-purple-mid))"></div><div class="dial-thumb" style="left:40%;background:var(--ml-purple)"></div></div>
+                <div class="dial-label-right">Con humor</div>
+              </div>
+              <p class="dial-caption">Mayoritariamente serio — pero no frío</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Aspiracional</div>
+                <div class="dial-track"><div class="dial-fill" style="width:55%;background:linear-gradient(90deg,var(--neutral-line),var(--ml-purple-mid))"></div><div class="dial-thumb" style="left:55%;background:var(--ml-purple)"></div></div>
+                <div class="dial-label-right">Práctico</div>
+              </div>
+              <p class="dial-caption">Equilibrio — promete y entrega en concreto</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Corporativo</div>
+                <div class="dial-track"><div class="dial-fill" style="width:65%;background:linear-gradient(90deg,var(--neutral-line),var(--ml-purple-mid))"></div><div class="dial-thumb" style="left:65%;background:var(--ml-purple)"></div></div>
+                <div class="dial-label-right">Humano</div>
+              </div>
+              <p class="dial-caption">Humano — la salud son personas, no procesos</p>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="dos-box" style="background:#F3EDFB;border-color:#C9A8ED">
+            <div class="dos-title" style="color:var(--ml-purple)">✅ Medilink dice</div>
+            <ul class="phrase-list">
+              <li style="background:rgba(92,45,142,.08);color:#3D1A6A">"Especialistas en salud. Integramos TODA tu clínica en un solo sistema."</li>
+              <li style="background:rgba(92,45,142,.08);color:#3D1A6A">"Facilitamos la atención médica e información clínica cuando la necesitas."</li>
+              <li style="background:rgba(92,45,142,.08);color:#3D1A6A">"Acompañamos, explicamos, guiamos. Entendemos, compartimos."</li>
+              <li style="background:rgba(92,45,142,.08);color:#3D1A6A">"Hay muchas cosas que no puedes controlar. Nosotros sabemos de seguridad, de información y de normativa vigente. Tú sabes cómo atender a tu paciente."</li>
+            </ul>
+          </div>
+          <div class="donts-box">
+            <div class="donts-title">🚫 Medilink nunca dice</div>
+            <ul class="phrase-list">
+              <li>"Podemos hacer todo" / "Difícil, complejo"</li>
+              <li>"Muchas palabras, poca acción"</li>
+              <li>Palabras técnicas sin contexto de normativas</li>
+              <li>"La salud necesita menos personas y más tecnología"</li>
+              <li>Nada que reemplace el criterio profesional</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DL TONO -->
+    <div id="tono-dl" class="brand-panel">
+      <div class="personality-grid">
+        <div>
+          <div class="dial-list" style="background:var(--white);border:1px solid var(--neutral-line);border-radius:16px;padding:28px">
+            <p style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--neutral-mid)">Posicionamiento de tono — Dentalink</p>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Formal</div>
+                <div class="dial-track"><div class="dial-fill" style="width:68%;background:linear-gradient(90deg,var(--neutral-line),var(--dl-blue-mid))"></div><div class="dial-thumb" style="left:68%;background:var(--dl-blue)"></div></div>
+                <div class="dial-label-right">Cercano</div>
+              </div>
+              <p class="dial-caption">Claramente cercano — habla de tú a tú</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Técnico</div>
+                <div class="dial-track"><div class="dial-fill" style="width:65%;background:linear-gradient(90deg,var(--neutral-line),var(--dl-blue-mid))"></div><div class="dial-thumb" style="left:65%;background:var(--dl-blue)"></div></div>
+                <div class="dial-label-right">Simple y claro</div>
+              </div>
+              <p class="dial-caption">Simple — simplifica lo complejo de la gestión</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Serio</div>
+                <div class="dial-track"><div class="dial-fill" style="width:55%;background:linear-gradient(90deg,var(--neutral-line),var(--dl-blue-mid))"></div><div class="dial-thumb" style="left:55%;background:var(--dl-blue)"></div></div>
+                <div class="dial-label-right">Con humor</div>
+              </div>
+              <p class="dial-caption">Algo de humor — pero sin memes excesivos</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Aspiracional</div>
+                <div class="dial-track"><div class="dial-fill" style="width:58%;background:linear-gradient(90deg,var(--neutral-line),var(--dl-blue-mid))"></div><div class="dial-thumb" style="left:58%;background:var(--dl-blue)"></div></div>
+                <div class="dial-label-right">Práctico</div>
+              </div>
+              <p class="dial-caption">Levemente práctico — promesa concreta y alcanzable</p>
+            </div>
+            <div>
+              <div class="dial-row">
+                <div class="dial-label-left">Corporativo</div>
+                <div class="dial-track"><div class="dial-fill" style="width:72%;background:linear-gradient(90deg,var(--neutral-line),var(--dl-blue-mid))"></div><div class="dial-thumb" style="left:72%;background:var(--dl-blue)"></div></div>
+                <div class="dial-label-right">Humano</div>
+              </div>
+              <p class="dial-caption">Muy humano — detrás de cada clínica hay sueños</p>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="dos-box" style="background:#EBF0FA;border-color:#9DB5E0">
+            <div class="dos-title" style="color:var(--dl-blue)">✅ Dentalink dice</div>
+            <ul class="phrase-list">
+              <li style="background:rgba(26,79,156,.08);color:#0D2E6E">"Abriste tu consulta para cuidar sonrisas, no para pasar horas gestionando procesos."</li>
+              <li style="background:rgba(26,79,156,.08);color:#0D2E6E">"Gestiona tu clínica más tiempo con tus pacientes."</li>
+              <li style="background:rgba(26,79,156,.08);color:#0D2E6E">"Simplifica tu operación diaria. La tecnología debe trabajar para ti."</li>
+              <li style="background:rgba(26,79,156,.08);color:#0D2E6E">"Confianza a toda hora. Simple, tu clínica vuela en 1 solo clic."</li>
+              <li style="background:rgba(26,79,156,.08);color:#0D2E6E">"Somos ese equipo que te ayuda a conservar algo importante."</li>
+            </ul>
+          </div>
+          <div class="donts-box">
+            <div class="donts-title">🚫 Dentalink nunca dice</div>
+            <ul class="phrase-list">
+              <li>"Somos el mejor software del mercado" (sin sustento)</li>
+              <li>"Si no usas Dentalink estás perdiendo dinero"</li>
+              <li>"Solución disruptiva de última generación basada en sinergias digitales"</li>
+              <li>"Revolcionamos la odontología" (no se puede demostrar)</li>
+              <li>Garantías de duplicar ingresos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MANIFIESTO -->
+  <section class="section" id="manifiesto">
+    <div class="section-eyebrow" style="color:var(--accent-gold)">Manifiesto</div>
+    <h2 class="section-title">Lo que cada marca diría al mundo</h2>
+
+    <div class="brand-tabs">
+      <div class="brand-tab active-ha" onclick="showBrand('manifiesto','ha',this)">⚛ Healthatom</div>
+      <div class="brand-tab" onclick="showBrand('manifiesto','ml',this)">🏥 Medilink</div>
+      <div class="brand-tab" onclick="showBrand('manifiesto','dl',this)">🦷 Dentalink</div>
+    </div>
+
+    <!-- HA MANIFIESTO -->
+    <div id="manifiesto-ha" class="brand-panel active">
+      <div class="manifesto-grid">
+        <div class="manifesto-block" style="border-color:var(--ha-teal-light)">
+          <div class="manifesto-stem" style="color:var(--ha-teal)">Creemos que…</div>
+          <div class="manifesto-text">El mundo cambia constantemente — nuevas actualizaciones en tecnología todos los días — y la salud no es ajena a ello. La tecnología sola no construye el futuro de la salud: son las personas que ayudan a otras a trabajar mejor las que lo hacen posible.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--ha-teal-light)">
+          <div class="manifesto-stem" style="color:var(--ha-teal)">Existimos para…</div>
+          <div class="manifesto-text">Mezclar innovación, investigación y tecnología con servicio a las personas — potenciando a los profesionales en la operatividad para que ellos puedan concentrarse 100% en atender pacientes. Democratizar acceso a propuestas que antes solo podían alcanzar los grandes.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--ha-teal-light)">
+          <div class="manifesto-stem" style="color:var(--ha-teal)">El mundo que queremos ver es…</div>
+          <div class="manifesto-text">Una salud más humana, más eficiente y más conectada. Donde los equipos tengan la información que necesitan para dedicar menos tiempo a la administración y más tiempo a cuidar personas. Donde la tecnología libera, no reemplaza.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--ha-teal-light)">
+          <div class="manifesto-stem" style="color:var(--ha-teal)">Por eso hacemos…</div>
+          <div class="manifesto-text">Un ecosistema tecnológico especializado en salud que acompaña la transformación digital de clínicas y centros médicos en Latam. Innovamos constantemente y nos adaptamos a los problemas que el profesional contemporáneo enfrenta cada día.</div>
+        </div>
+      </div>
+      <div class="manifesto-quote" style="color:var(--ha-teal)">
+        "La innovación nos mueve, pero las personas nos definen."
+      </div>
+    </div>
+
+    <!-- ML MANIFIESTO -->
+    <div id="manifiesto-ml" class="brand-panel">
+      <div class="manifesto-grid">
+        <div class="manifesto-block" style="border-color:var(--ml-purple-light)">
+          <div class="manifesto-stem" style="color:var(--ml-purple)">Creemos que…</div>
+          <div class="manifesto-text">Administrar un negocio en salud no es tarea fácil. Tienes que construir un equilibrio entre ayudar a las personas y lograr una rentabilidad real. La salud no es un negocio, pero necesitas herramientas para no quedar en ceros.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--ml-purple-light)">
+          <div class="manifesto-stem" style="color:var(--ml-purple)">Existimos para…</div>
+          <div class="manifesto-text">Agregar valor a las clínicas y centros médicos, y que ese valor lo puedan traspasar a sus pacientes. A través de tecnología que automatiza procesos, simplifica tareas y mejora la calidad de atención y tratamientos que entregan cada día.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--ml-purple-light)">
+          <div class="manifesto-stem" style="color:var(--ml-purple)">El mundo que queremos ver es…</div>
+          <div class="manifesto-text">Una medicina más cercana y más conectada. Donde la tecnología libere tiempo para que el cuidado siga siendo profundamente humano. Donde los profesionales de salud dediquen más tiempo a la atención y menos a la gestión administrativa.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--ml-purple-light)">
+          <div class="manifesto-stem" style="color:var(--ml-purple)">Por eso hacemos…</div>
+          <div class="manifesto-text">El único software especialista 100% en salud, con altos estándares de ciberseguridad y seguridad de la información. Además, contamos con una suite de herramientas IA que potencian los trabajos operativos y se reflejan de cara al paciente — ningún otro software en salud lo tiene. Somos tu aliado, tu equipo, tu complemento. Mientras tú protege tu clínica y tomas decisiones estratégicas, Medilink te cubre la panorámica.</div>
+        </div>
+      </div>
+      <div class="manifesto-quote" style="color:var(--ml-purple)">
+        "Hay muchas cosas que no puedes controlar. Nosotros sabemos de seguridad, de información y de normativa. Tú sabes cómo atender a tu paciente."
+      </div>
+    </div>
+
+    <!-- DL MANIFIESTO -->
+    <div id="manifiesto-dl" class="brand-panel">
+      <div class="manifesto-grid">
+        <div class="manifesto-block" style="border-color:var(--dl-blue-light)">
+          <div class="manifesto-stem" style="color:var(--dl-blue)">Creemos que…</div>
+          <div class="manifesto-text">Las clínicas dentales pueden mejorar la salud dental de las personas a través de la tecnología e innovación. Una clínica organizada puede cambiar vidas. Detrás de cada agenda hay una persona, con historia, familia y sonrisas.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--dl-blue-light)">
+          <div class="manifesto-stem" style="color:var(--dl-blue)">Existimos para…</div>
+          <div class="manifesto-text">Ayudar a los odontólogos y administradores de clínicas a recuperar el control de su operación diaria, reduciendo el caos administrativo, los errores y el tiempo perdido en tareas manuales. Para que se enfoquen en lo que mejor saben hacer.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--dl-blue-light)">
+          <div class="manifesto-stem" style="color:var(--dl-blue)">El mundo que queremos ver es…</div>
+          <div class="manifesto-text">Una odontología más humana, más simple, con más tiempo para lo que realmente importa. El futuro pensamos para la odontología llegó — las tareas repetitivas, la gestión, la seguridad ya son parte de un solo sistema.</div>
+        </div>
+        <div class="manifesto-block" style="border-color:var(--dl-blue-light)">
+          <div class="manifesto-stem" style="color:var(--dl-blue)">Por eso hacemos…</div>
+          <div class="manifesto-text">No solo digitalizamos clínicas dentales, ayudamos a que crezcan de manera ordenada, rentable y centrada en el paciente. Somos el software dental más antiguo de Chile, presentes en más de 22 países, con opciones de financiamiento, seguros y pagos en línea que mejoran el acceso. Y contamos con una suite de herramientas IA que potencian los trabajos operativos y se reflejan de cara al paciente — ningún otro software dental lo tiene.</div>
+        </div>
+      </div>
+      <div class="manifesto-quote" style="color:var(--dl-blue)">
+        "Abriste tu consulta para cuidar sonrisas, no para lidiar con procesos complejos. Para eso, lo más importante son tus pacientes — y nosotros nos importas tú."
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ICP -->
+  <section class="section" id="icp">
+    <div class="section-eyebrow" style="color:var(--ml-purple)">Mensajes por tipo de cliente</div>
+    <h2 class="section-title">Cómo les hablamos según su realidad</h2>
+
+    <div class="brand-tabs">
+      <div class="brand-tab active-ml" onclick="showBrand('icp','ml',this)">🏥 Medilink</div>
+      <div class="brand-tab" onclick="showBrand('icp','dl',this)">🦷 Dentalink</div>
+    </div>
+
+    <!-- ML ICP -->
+    <div id="icp-ml" class="brand-panel active">
+      <div class="icp-grid">
+
+        <div class="icp-card">
+          <div class="icp-header">
+            <div><span class="icp-dot" style="background:#22C55E"></span><span class="icp-name">Unipersonal</span></div>
+            <div class="icp-sub">1 profesional. El dueño ES la clínica.</div>
+          </div>
+          <div class="icp-body">
+            <div>
+              <div class="icp-section-label" style="color:#B83030">Dolor principal</div>
+              <div class="icp-text">Está agotada/o. Emprender es difícil, necesita resolver tareas puntuales y simples. Todo depende de ella/él, y sueña con tener más tiempo libre. Gestionar una clínica requiere habilidades fuera de la salud.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--ml-purple)">Tono / mensaje que resuena</div>
+              <div class="icp-text">Empático, simple, alivio inmediato. Que entiende su carga y la reduce, no que le explica más cosas.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--neutral-mid)">Headline directo</div>
+              <div class="icp-headline" style="border-color:var(--ml-purple)">"Sabemos que tu tiempo es limitado. Medilink te ayuda a simplificar la gestión de tu consulta para que puedas dedicar más energía a tus pacientes y menos a las tareas administrativas."</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="icp-card">
+          <div class="icp-header">
+            <div><span class="icp-dot" style="background:#3B82F6"></span><span class="icp-name">2–9 empleados</span></div>
+            <div class="icp-sub">Crecimiento reciente. Caos operativo.</div>
+          </div>
+          <div class="icp-body">
+            <div>
+              <div class="icp-section-label" style="color:#B83030">Dolor principal</div>
+              <div class="icp-text">Cuando el equipo crece, la coordinación se vuelve clave. Evidencia caos, quiere organizarse y crecer. Necesita una herramienta que sirva para cada uno de los profesionales — administrativos, clínicas, facturación.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--ml-purple)">Tono / mensaje que resuena</div>
+              <div class="icp-text">Organización, control, eficiencia para crecer. La promesa es que pueden crecer sin perder la calidad ni aumentar el caos.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--neutral-mid)">Headline directo</div>
+              <div class="icp-headline" style="border-color:var(--ml-purple)">"El crecimiento va de la mano con un sistema que controle todo. Medilink centraliza la información y simplifica los procesos para que todos trabajen de forma más eficiente y conectada."</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="icp-card">
+          <div class="icp-header">
+            <div><span class="icp-dot" style="background:#F97316"></span><span class="icp-name">10–20 empleados</span></div>
+            <div class="icp-sub">Procesos + eficiencia. Multisede.</div>
+          </div>
+          <div class="icp-body">
+            <div>
+              <div class="icp-section-label" style="color:#B83030">Dolor principal</div>
+              <div class="icp-text">Lo más complicado es unificar la información entre sedes y profesionales, con el resguardo legal necesario. Claridad: ¿qué funciona? ¿Cómo agilizar en horas vs rentabilidad? Busca disminuir tiempos.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--ml-purple)">Tono / mensaje que resuena</div>
+              <div class="icp-text">Control, visibilidad, tranquilidad operativa. Hablar de datos y cumplimiento normativo, no solo de funcionalidades.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--neutral-mid)">Headline directo</div>
+              <div class="icp-headline" style="border-color:var(--ml-purple)">"El crecimiento trajo nuevos desafíos. Medilink te entrega visibilidad, control y herramientas para gestionar tu operación de forma compleja, manteniendo una atención de calidad para tus pacientes."</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="icp-card">
+          <div class="icp-header">
+            <div><span class="icp-dot" style="background:#EF4444"></span><span class="icp-name">Enterprise</span></div>
+            <div class="icp-sub">Escala, datos, integración, ROI.</div>
+          </div>
+          <div class="icp-body">
+            <div>
+              <div class="icp-section-label" style="color:#B83030">Dolor principal</div>
+              <div class="icp-text">Gestionar con orden, bajo el amparo legal y de seguridad que requiere un negocio grande. Estandarizar todos los procesos, altos estándares de seguridad y protección, cumplir con todas las normativas. Quiere transformar la salud a gran escala.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--ml-purple)">Tono / mensaje que resuena</div>
+              <div class="icp-text">ROI, cumplimiento normativo, toma de decisiones basadas en datos. Hablar de ciberseguridad, seguridad de la información, integración y escala. Destacar la suite IA como ventaja competitiva única.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--neutral-mid)">Headline directo</div>
+              <div class="icp-headline" style="border-color:var(--ml-purple)">"Gestionar una operación compleja requiere información confiable y procesos conectados. Medilink te ayuda a estandarizar la gestión, optimizar la operación y tomar decisiones estratégicas basadas en datos."</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DL ICP -->
+    <div id="icp-dl" class="brand-panel">
+      <div class="icp-grid">
+
+        <div class="icp-card">
+          <div class="icp-header">
+            <div><span class="icp-dot" style="background:#22C55E"></span><span class="icp-name">Unipersonal</span></div>
+            <div class="icp-sub">1 profesional. El dueño ES la clínica.</div>
+          </div>
+          <div class="icp-body">
+            <div>
+              <div class="icp-section-label" style="color:#B83030">Dolor principal</div>
+              <div class="icp-text">Recuperar tiempo, atender mejor, vivir con menos estrés. Simplemente no se puede trabajar 24 hrs — Dentalink hace todo lo que no le enseñaron y que no tiene por qué saber.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--dl-blue)">Tono / mensaje que resuena</div>
+              <div class="icp-text">Alivio, simplicidad, control en un clic. Que simplifica lo tedioso sin abrumarlo. La promesa es un día a día más sencillo.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--neutral-mid)">Headline directo</div>
+              <div class="icp-headline" style="border-color:var(--dl-blue)">"Abriste tu consulta para cuidar sonrisas, no para pasar horas gestionando procesos. Dentalink te ayuda a organizar tu consulta, optimizar tu tiempo y brindar una mejor experiencia a tus pacientes."</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="icp-card">
+          <div class="icp-header">
+            <div><span class="icp-dot" style="background:#3B82F6"></span><span class="icp-name">2–9 empleados</span></div>
+            <div class="icp-sub">Crecimiento reciente. Caos operativo.</div>
+          </div>
+          <div class="icp-body">
+            <div>
+              <div class="icp-section-label" style="color:#B83030">Dolor principal</div>
+              <div class="icp-text">El crecimiento comenzó a traer desorden: pérdida de visibilidad del negocio, quiere tener orden y trabajar más en equipo. Rentabilidad por sillón — quiere entender dónde puede crecer más su clínica.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--dl-blue)">Tono / mensaje que resuena</div>
+              <div class="icp-text">Orden, crecimiento ordenado, eficiencia. Conectar a su equipo y darle visibilidad del negocio sin perder el foco clínico.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--neutral-mid)">Headline directo</div>
+              <div class="icp-headline" style="border-color:var(--dl-blue)">"Cuando tu clínica empieza a crecer, la organización se vuelve fundamental. Dentalink conecta tu equipo, centraliza la información y te ayuda a ofrecer una experiencia más fluida para pacientes y colaboradores."</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="icp-card">
+          <div class="icp-header">
+            <div><span class="icp-dot" style="background:#F97316"></span><span class="icp-name">10–20 empleados</span></div>
+            <div class="icp-sub">Procesos + eficiencia. Multisede.</div>
+          </div>
+          <div class="icp-body">
+            <div>
+              <div class="icp-section-label" style="color:#B83030">Dolor principal</div>
+              <div class="icp-text">Normativa, cómo atraer nuevos pacientes, fidelizar actuales, montar una nueva sede y tener trazabilidad. La operación tiene mayor relevancia — necesitan indicadores y visibilidad.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--dl-blue)">Tono / mensaje que resuena</div>
+              <div class="icp-text">Control, escala con confianza, datos para decidir. Crecer no debería significar perder el control — Dentalink entrega las herramientas para que sigan creciendo con confianza.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--neutral-mid)">Headline directo</div>
+              <div class="icp-headline" style="border-color:var(--dl-blue)">"Crecer no debería significar perder el control. Dentalink te entrega las herramientas y la visibilidad que necesitas para gestionar tu clínica de forma eficiente, tomar mejores decisiones y seguir creciendo con confianza."</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="icp-card">
+          <div class="icp-header">
+            <div><span class="icp-dot" style="background:#EF4444"></span><span class="icp-name">Enterprise</span></div>
+            <div class="icp-sub">Escala, datos, integración, ROI.</div>
+          </div>
+          <div class="icp-body">
+            <div>
+              <div class="icp-section-label" style="color:#B83030">Dolor principal</div>
+              <div class="icp-text">Gestionar una red de clínicas requiere mucho más que una agenda digital: conectar operaciones, estandarizar procesos y obtener una visión integral del negocio para impulsar un crecimiento sostenible.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--dl-blue)">Tono / mensaje que resuena</div>
+              <div class="icp-text">Infraestructura, ROI, sincronización entre sedes. Dentalink no es solo software de gestión — es la infraestructura que centraliza toda la operación.</div>
+            </div>
+            <div>
+              <div class="icp-section-label" style="color:var(--neutral-mid)">Headline directo</div>
+              <div class="icp-headline" style="border-color:var(--dl-blue)">"Gestionar una red de clínicas implica controlar la fuga de ingresos, estandarizar la atención clínica y coordinar cientos de profesionales. Dentalink es la infraestructura tecnológica que centraliza toda tu operación."</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  Brand Foundation Document · Healthatom Group · Versión 1.0 · Junio 2025<br>
+  Construido a partir del Brand Workshop con el equipo de Marketing.
+</footer>
+
+<script>
+  function showBrand(section, brand, clickedTab) {
+    // Hide all panels in this section
+    document.querySelectorAll('#' + section + '-ha, #' + section + '-ml, #' + section + '-dl').forEach(p => p.classList.remove('active'));
+    // Deactivate all tabs in this group
+    clickedTab.parentElement.querySelectorAll('.brand-tab').forEach(t => {
+      t.classList.remove('active-ha', 'active-ml', 'active-dl');
+    });
+    // Show selected panel
+    document.getElementById(section + '-' + brand).classList.add('active');
+    // Activate clicked tab
+    clickedTab.classList.add('active-' + brand);
+  }
+</script>
+</body>
+</html>
